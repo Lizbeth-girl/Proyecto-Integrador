@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroGestión</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js" defer></script>
+    <script src="js/app.js" defer></script>
+</head>
+<body>
+
+    <aside class="menu">
+        <h2>
+            <i data-lucide="sprout"></i>
+            AgroGestión
+        </h2>
+
+        <nav>
+            <a href="index.html" class="activo">
+                <i data-lucide="layout-dashboard"></i>
+                Dashboard
+            </a>
+
+            <a href="parcelas.html">
+                <i data-lucide="map-pinned"></i>
+                Parcelas
+            </a>
+
+            <a href="cultivos.html">
+                <i data-lucide="sprout"></i>
+                Cultivos
+            </a>
+
+            <a href="#">
+                <i data-lucide="clipboard-check"></i>
+                Actividades
+            </a>
+
+            <a href="#">
+                <i data-lucide="wheat"></i>
+                Cosechas
+            </a>
+
+            <a href="#">
+                <i data-lucide="package"></i>
+                Insumos
+            </a>
+
+            <a href="#">
+                <i data-lucide="users"></i>
+                Trabajadores
+            </a>
+
+            <a href="#">
+                <i data-lucide="list-check"></i>
+                Asignaciones
+            </a>
+
+            <a href="#">
+                <i data-lucide="user-round"></i>
+                Clientes
+            </a>
+
+            <a href="#">
+                <i data-lucide="shopping-cart"></i>
+                Ventas
+            </a>
+
+            <a href="#">
+                <i data-lucide="wallet"></i>
+                Gastos
+            </a>
+
+            <a href="#">
+                <i data-lucide="shield-check"></i>
+                Usuarios
+            </a>
+        </nav>
+    </aside>
+
+    <main class="contenido">
+
+        <header>
+            <h1>Sistema de Gestión Agrícola</h1>
+
+            <span>
+                <i data-lucide="circle-user-round"></i>
+                Administrador
+            </span>
+        </header>
+
+        <section class="bienvenida">
+            <h2>Panel de administración</h2>
+            <p>Control y seguimiento de las actividades agrícolas.</p>
+        </section>
+
+        <section class="tarjetas">
+
+            <div class="tarjeta">
+                <div class="tarjeta-icono verde">
+                    <i data-lucide="map-pinned"></i>
+                </div>
+                <h3>Parcelas</h3>
+                <p id="totalParcelas">--</p>
+            </div>
+
+            <div class="tarjeta">
+                <div class="tarjeta-icono verde">
+                    <i data-lucide="sprout"></i>
+                </div>
+                <h3>Cultivos</h3>
+                <p id="totalCultivos">--</p>
+            </div>
+
+            <div class="tarjeta">
+                <div class="tarjeta-icono azul">
+                    <i data-lucide="clipboard-check"></i>
+                </div>
+                <h3>Actividades</h3>
+                <p id="totalActividades">--</p>
+            </div>
+
+            <div class="tarjeta">
+                <div class="tarjeta-icono amarillo">
+                    <i data-lucide="wheat"></i>
+                </div>
+                <h3>Cosechas</h3>
+                <p id="totalCosechas">--</p>
+            </div>
+
+            <div class="tarjeta">
+                <div class="tarjeta-icono verde">
+                    <i data-lucide="users"></i>
+                </div>
+                <h3>Trabajadores</h3>
+                <p id="totalTrabajadores">--</p>
+            </div>
+
+            <div class="tarjeta">
+                <div class="tarjeta-icono azul">
+                    <i data-lucide="shopping-cart"></i>
+                </div>
+                <h3>Ventas</h3>
+                <p id="totalVentas">--</p>
+            </div>
+
+        </section>
+
+        <section class="panel">
+            <h2>
+                <i data-lucide="clipboard-list"></i>
+                Actividades agrícolas recientes
+            </h2>
+
+            <p>Las actividades registradas aparecerán aquí.</p>
+        </section>
+
+    </main>
+
+</body>
+</html>

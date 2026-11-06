@@ -1,0 +1,41 @@
+
+#buscarCultivo {
+    width: 100%;
+    padding: 12px;
+    margin: 15px 0;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+.formulario-panel textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 6px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-family: Arial, sans-serif;
+    resize: vertical;
+}
+
+.estado-cultivo {
+    display: inline-block;
+    padding: 6px 10px;
+    background: #e5f5e9;
+    color: #207447;
+    border-radius: 6px;
+    font-size: 13px;
+}
+
+.tabla-contenedor td {
+    white-space: nowrap;
+}
+
+.tabla-contenedor button {
+    margin: 3px;
+}
+
+.panel h2 svg {
+    width: 23px;
+    height: 23px;
+    color: #24834b;
+}

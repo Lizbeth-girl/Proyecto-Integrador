@@ -1,0 +1,109 @@
+
+.encabezado-parcelas {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+    gap: 15px;
+}
+
+.encabezado-parcelas h2 {
+    margin-bottom: 5px;
+}
+
+.encabezado-parcelas p {
+    margin-top: 0;
+}
+
+button {
+    background: #287a4b;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1b5c38;
+}
+
+#buscarParcela {
+    width: 100%;
+    padding: 12px;
+    margin: 15px 0;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+.tabla-contenedor {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 14px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background: #f0f4f1;
+}
+
+.tabla-contenedor button {
+    padding: 8px 12px;
+    margin: 3px;
+}
+
+.btn-eliminar {
+    background: #c0392b;
+}
+
+.btn-eliminar:hover {
+    background: #922b21;
+}
+
+.formulario-panel {
+    max-width: 600px;
+}
+
+.formulario-panel[hidden] {
+    display: none;
+}
+
+form label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+form input,
+form select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 6px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.acciones-formulario {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+#btnCancelar {
+    background: #777;
+}
+
+@media (max-width: 700px) {
+    .encabezado-parcelas {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}

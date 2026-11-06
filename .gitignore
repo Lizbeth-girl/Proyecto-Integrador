@@ -1,0 +1,23 @@
+
+# Dependencias de Node.js
+node_modules/
+backend/node_modules/
+
+# Variables privadas
+.env
+.env.*
+!.env.example
+
+# Archivos temporales
+*.log
+.DS_Store
+Thumbs.db
+
+# Archivos de Visual Studio Code
+.vscode/
+
+# Archivos generados
+dist/
+build/
+coverage/
+

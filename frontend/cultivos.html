@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Cultivos</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/parcelas.css">
+    <link rel="stylesheet" href="css/cultivos.css">
+    <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js" defer></script>
+    <script src="js/cultivos.js" defer></script>
+</head>
+<body>
+
+    <aside class="menu">
+        <h2><i data-lucide="sprout"></i> AgroGestión</h2>
+
+        <nav>
+            <a href="index.html">
+                <i data-lucide="layout-dashboard"></i> Dashboard
+            </a>
+            <a href="parcelas.html">
+                <i data-lucide="map-pinned"></i> Parcelas
+            </a>
+            <a href="cultivos.html" class="activo">
+                <i data-lucide="sprout"></i> Cultivos
+            </a>
+            <a href="#"><i data-lucide="clipboard-check"></i> Actividades</a>
+            <a href="#"><i data-lucide="wheat"></i> Cosechas</a>
+            <a href="#"><i data-lucide="package"></i> Insumos</a>
+            <a href="#"><i data-lucide="users"></i> Trabajadores</a>
+            <a href="#"><i data-lucide="list-check"></i> Asignaciones</a>
+            <a href="#"><i data-lucide="user-round"></i> Clientes</a>
+            <a href="#"><i data-lucide="shopping-cart"></i> Ventas</a>
+            <a href="#"><i data-lucide="wallet"></i> Gastos</a>
+            <a href="#"><i data-lucide="shield-check"></i> Usuarios</a>
+        </nav>
+    </aside>
+
+    <main class="contenido">
+        <header>
+            <h1>Sistema de Gestión Agrícola</h1>
+            <span><i data-lucide="circle-user-round"></i> Administrador</span>
+        </header>
+
+        <section class="encabezado-parcelas">
+            <div>
+                <h2>Gestión de Cultivos</h2>
+                <p>Registro y seguimiento de los cultivos agrícolas.</p>
+            </div>
+
+            <button type="button" id="btnNuevo">
+                + Nuevo cultivo
+            </button>
+        </section>
+
+        <section class="panel">
+            <h2><i data-lucide="sprout"></i> Cultivos registrados</h2>
+
+            <input type="search" id="buscarCultivo"
+                   placeholder="Buscar cultivo o parcela...">
+
+            <div class="tabla-contenedor">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Cultivo</th>
+                            <th>Parcela</th>
+                            <th>Siembra</th>
+                            <th>Cosecha estimada</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaCultivos">
+                        <tr>
+                            <td colspan="7">Cargando cultivos...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="panel formulario-panel"
+                 id="panelFormulario" hidden>
+
+            <h2 id="tituloFormulario">Registrar cultivo</h2>
+
+            <form id="formCultivo">
+                <input type="hidden" id="cultivoId">
+
+                <label for="parcela">Parcela</label>
+                <select id="parcela" required>
+                    <option value="">Seleccione una parcela</option>
+                </select>
+
+                <label for="nombre">Nombre del cultivo</label>
+                <input type="text" id="nombre" maxlength="100" required>
+
+                <label for="fechaSiembra">Fecha de siembra</label>
+                <input type="date" id="fechaSiembra" required>
+
+                <label for="fechaCosecha">Cosecha estimada</label>
+                <input type="date" id="fechaCosecha">
+
+                <label for="estado">Estado</label>
+                <select id="estado" required>
+                    <option value="">Seleccione un estado</option>
+                    <option value="Sembrado">Sembrado</option>
+                    <option value="En crecimiento">En crecimiento</option>
+                    <option value="Listo para cosecha">Listo para cosecha</option>
+                    <option value="Cosechado">Cosechado</option>
+                </select>
+
+                <label for="observaciones">Observaciones</label>
+                <textarea id="observaciones" rows="4"
+                          placeholder="Detalles del cultivo"></textarea>
+
+                <div class="acciones-formulario">
+                    <button type="submit">Guardar</button>
+                    <button type="button" id="btnCancelar">Cancelar</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+</body>
+</html>
