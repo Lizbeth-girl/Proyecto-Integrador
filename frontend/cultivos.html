@@ -1,16 +1,19 @@
-
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestión de Cultivos</title>
+    
+    <title>Gestión de cultivos | AgroGestión</title>
+
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/parcelas.css">
     <link rel="stylesheet" href="css/cultivos.css">
     <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js" defer></script>
     <script src="js/cultivos.js" defer></script>
 </head>
+
 <body>
 
     <aside class="menu">
@@ -26,13 +29,42 @@
             <a href="cultivos.html" class="activo">
                 <i data-lucide="sprout"></i> Cultivos
             </a>
-            <a href="#"><i data-lucide="clipboard-check"></i> Actividades</a>
-            <a href="#"><i data-lucide="wheat"></i> Cosechas</a>
-            <a href="#"><i data-lucide="package"></i> Insumos</a>
-            <a href="#"><i data-lucide="users"></i> Trabajadores</a>
-            <a href="#"><i data-lucide="list-check"></i> Asignaciones</a>
-            <a href="#"><i data-lucide="user-round"></i> Clientes</a>
-            <a href="#"><i data-lucide="shopping-cart"></i> Ventas</a>
+
+            <a href="actividades.html">
+                <i data-lucide="clipboard-check"></i>
+                Actividades
+            </a>
+
+            <a href="/cosechas.html">
+                <i data-lucide="wheat"></i>
+                Cosechas
+            </a>
+
+            <a href="/insumos.html">
+                <i data-lucide="package"></i>
+                Insumos
+            </a>
+
+            <a href="/trabajadores.html">
+                <i data-lucide="users"></i>
+                Trabajadores
+            </a>
+
+            <a href="/asignaciones.html">
+                <i data-lucide="list-check"></i>
+                Asignaciones
+            </a>
+
+            <a href="/clientes.html">
+                <i data-lucide="user-round"></i>
+                Clientes
+            </a>
+
+            <a href="/ventas.html">
+                <i data-lucide="shopping-cart"></i>
+                Ventas
+            </a>
+
             <a href="#"><i data-lucide="wallet"></i> Gastos</a>
             <a href="#"><i data-lucide="shield-check"></i> Usuarios</a>
         </nav>
@@ -40,7 +72,7 @@
 
     <main class="contenido">
         <header>
-            <h1>Sistema de Gestión Agrícola</h1>
+            <h1>Sistema de Gestión Agrícola Pitahaya</h1>
             <span><i data-lucide="circle-user-round"></i> Administrador</span>
         </header>
 
@@ -58,8 +90,7 @@
         <section class="panel">
             <h2><i data-lucide="sprout"></i> Cultivos registrados</h2>
 
-            <input type="search" id="buscarCultivo"
-                   placeholder="Buscar cultivo o parcela...">
+            <input type="search" id="buscarCultivo" placeholder="Buscar cultivo o parcela...">
 
             <div class="tabla-contenedor">
                 <table>
@@ -83,8 +114,7 @@
             </div>
         </section>
 
-        <section class="panel formulario-panel"
-                 id="panelFormulario" hidden>
+        <section class="panel formulario-panel" id="panelFormulario" hidden>
 
             <h2 id="tituloFormulario">Registrar cultivo</h2>
 
@@ -115,8 +145,7 @@
                 </select>
 
                 <label for="observaciones">Observaciones</label>
-                <textarea id="observaciones" rows="4"
-                          placeholder="Detalles del cultivo"></textarea>
+                <textarea id="observaciones" rows="4" placeholder="Detalles del cultivo"></textarea>
 
                 <div class="acciones-formulario">
                     <button type="submit">Guardar</button>
@@ -127,4 +156,5 @@
     </main>
 
 </body>
+
 </html>

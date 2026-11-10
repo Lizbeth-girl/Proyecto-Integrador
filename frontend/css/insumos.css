@@ -1,0 +1,145 @@
+/* INDICADORES */
+
+.resumen-insumos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 28px;
+}
+
+.resumen-insumo-card {
+    padding: 22px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px #0000000a;
+}
+
+.resumen-insumo-card span {
+    display: block;
+    color: #65746b;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.resumen-insumo-card strong {
+    font-size: 30px;
+    color: #25332b;
+}
+
+.icono-resumen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    margin-bottom: 16px;
+    border-radius: 12px;
+    background: #e5f5e9;
+    color: #24834b;
+}
+
+.icono-resumen svg {
+    width: 24px;
+    height: 24px;
+}
+
+.icono-resumen.advertencia {
+    background: #fff2d9;
+    color: #b77912;
+}
+
+.icono-resumen.peligro {
+    background: #fde9e7;
+    color: #c0392b;
+}
+
+/* FILTROS */
+
+.filtros-insumos {
+    display: flex;
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.filtros-insumos input,
+.filtros-insumos select {
+    padding: 12px;
+    border: 1px solid #d9dfdc;
+    border-radius: 7px;
+    font-size: 14px;
+    background: white;
+}
+
+.filtros-insumos input {
+    flex: 1;
+    min-width: 0;
+}
+
+/* TABLA */
+
+.tabla-contenedor {
+    overflow-x: auto;
+}
+
+.tabla-contenedor table {
+    min-width: 780px;
+}
+
+.estado-stock {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 7px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.estado-disponible {
+    color: #217a45;
+    background: #e2f5e6;
+}
+
+.estado-bajo {
+    color: #a3680a;
+    background: #fff2d9;
+}
+
+.estado-agotado {
+    color: #b42318;
+    background: #fde9e7;
+}
+
+.acciones-insumo {
+    white-space: nowrap;
+}
+
+/* FORMULARIO */
+
+.ayuda-stock {
+    margin-top: 12px;
+    color: #65746b;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+#panelFormulario[hidden] {
+    display: none;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+    .resumen-insumos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 700px) {
+    .resumen-insumos {
+        grid-template-columns: 1fr;
+    }
+
+    .filtros-insumos {
+        flex-direction: column;
+    }
+}

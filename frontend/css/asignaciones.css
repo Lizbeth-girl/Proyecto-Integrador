@@ -1,0 +1,144 @@
+/* TARJETAS DE INDICADORES */
+
+.resumen-asignaciones {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 28px;
+}
+
+.resumen-asignacion-card {
+    background: white;
+    padding: 22px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px #0000000a;
+}
+
+.resumen-asignacion-card span {
+    display: block;
+    margin-bottom: 10px;
+    color: #65746b;
+    font-size: 14px;
+}
+
+.resumen-asignacion-card strong {
+    color: #25332b;
+    font-size: 30px;
+}
+
+.icono-resumen {
+    width: 46px;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    border-radius: 12px;
+    background: #e5f5e9;
+    color: #24834b;
+}
+
+.icono-resumen svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* BUSCADOR Y FILTROS */
+
+.filtros-asignaciones {
+    display: flex;
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.filtros-asignaciones input,
+.filtros-asignaciones select {
+    padding: 12px;
+    border: 1px solid #d9dfdc;
+    border-radius: 7px;
+    font-size: 14px;
+    background: white;
+}
+
+.filtros-asignaciones input {
+    flex: 1;
+    min-width: 0;
+}
+
+/* TABLA */
+
+.tabla-contenedor {
+    overflow-x: auto;
+}
+
+.tabla-contenedor table {
+    min-width: 1050px;
+}
+
+.acciones-asignacion {
+    white-space: nowrap;
+}
+
+.etiqueta-actividad {
+    display: inline-block;
+    border-radius: 7px;
+    padding: 6px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.actividad-pendiente {
+    background: #eceff1;
+    color: #56616d;
+}
+
+.actividad-proceso {
+    background: #fff2d9;
+    color: #a3680a;
+}
+
+.actividad-completada {
+    background: #e2f5e6;
+    color: #217a45;
+}
+
+.trabajador-inactivo {
+    color: #a3680a;
+    font-size: 12px;
+}
+
+/* FORMULARIO */
+
+#panelFormulario[hidden] {
+    display: none;
+}
+
+#formAsignacion select {
+    box-sizing: border-box;
+}
+
+.ayuda-asignacion {
+    margin-top: 14px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #65746b;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+    .resumen-asignaciones {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 700px) {
+    .resumen-asignaciones {
+        grid-template-columns: 1fr;
+    }
+
+    .filtros-asignaciones {
+        flex-direction: column;
+    }
+}

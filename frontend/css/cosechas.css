@@ -1,0 +1,139 @@
+/* TARJETAS DE RESUMEN */
+
+.resumen-cosechas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 28px;
+}
+
+.resumen-card {
+    background: white;
+    padding: 22px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px #0000000a;
+}
+
+.indicador-icono {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e5f5e9;
+    color: #24834b;
+    border-radius: 12px;
+    margin-bottom: 15px;
+}
+
+.indicador-icono svg {
+    width: 24px;
+    height: 24px;
+}
+
+.resumen-card span {
+    display: block;
+    color: #65746b;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.resumen-card strong {
+    font-size: 30px;
+    color: #25332b;
+}
+
+.resumen-card .valor-fecha {
+    font-size: 22px;
+}
+
+/* FILTROS */
+
+.filtros-cosechas {
+    display: flex;
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.filtros-cosechas input,
+.filtros-cosechas select {
+    padding: 12px;
+    border: 1px solid #d9dfdc;
+    border-radius: 7px;
+    background: white;
+    font-size: 14px;
+}
+
+.filtros-cosechas input {
+    flex: 1;
+    min-width: 0;
+}
+
+/* TABLA */
+
+.tabla-contenedor {
+    overflow-x: auto;
+}
+
+.tabla-contenedor table {
+    min-width: 760px;
+}
+
+.acciones-celda {
+    white-space: nowrap;
+}
+
+.btn-eliminar {
+    background: #c0392b;
+}
+
+.btn-eliminar:hover {
+    background: #922b21;
+}
+
+/* FORMULARIO */
+
+#formCosecha textarea {
+    width: 100%;
+    min-height: 110px;
+    padding: 12px;
+    margin-top: 7px;
+    border: 1px solid #d9dfdc;
+    border-radius: 7px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    resize: vertical;
+    box-sizing: border-box;
+}
+
+#formCosecha textarea:focus {
+    outline: none;
+    border-color: #287a4b;
+}
+
+#formCosecha input,
+#formCosecha select {
+    box-sizing: border-box;
+}
+
+#panelFormulario[hidden] {
+    display: none;
+}
+
+/* ADAPTACIÓN A CELULARES */
+
+@media (max-width: 900px) {
+    .resumen-cosechas {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 700px) {
+    .filtros-cosechas {
+        flex-direction: column;
+    }
+
+    .resumen-cosechas {
+        grid-template-columns: 1fr;
+    }
+}

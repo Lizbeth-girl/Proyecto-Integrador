@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Gestión de Cosechas | AgroGestión</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/parcelas.css">
+    <link rel="stylesheet" href="css/cosechas.css">
+
+    <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js" defer>
+    </script>
+
+    <script src="js/cosechas.js" defer></script>
+</head>
+
+<body>
+
+    <!-- MENÚ LATERAL -->
+    <aside class="menu">
+
+        <h2>
+            <i data-lucide="sprout"></i>
+            AgroGestión
+        </h2>
+
+        <nav>
+            <a href="index.html">
+                <i data-lucide="layout-dashboard"></i>
+                Dashboard
+            </a>
+
+            <a href="parcelas.html">
+                <i data-lucide="map-pinned"></i>
+                Parcelas
+            </a>
+
+            <a href="cultivos.html">
+                <i data-lucide="sprout"></i>
+                Cultivos
+            </a>
+
+            <a href="actividades.html">
+                <i data-lucide="clipboard-check"></i>
+                Actividades
+            </a>
+
+            <a href="cosechas.html" class="activo">
+                <i data-lucide="wheat"></i>
+                Cosechas
+            </a>
+
+            <a href="/insumos.html">
+                <i data-lucide="package"></i>
+                Insumos
+            </a>
+
+            <a href="/trabajadores.html">
+                <i data-lucide="users"></i>
+                Trabajadores
+            </a>
+
+            <a href="/asignaciones.html">
+                <i data-lucide="list-check"></i>
+                Asignaciones
+            </a>
+
+            <a href="/clientes.html">
+                <i data-lucide="user-round"></i>
+                Clientes
+            </a>
+
+            <a href="/ventas.html">
+                <i data-lucide="shopping-cart"></i>
+                Ventas
+            </a>
+
+            <a href="#">
+                <i data-lucide="wallet"></i>
+                Gastos
+            </a>
+
+            <a href="#">
+                <i data-lucide="shield-check"></i>
+                Usuarios
+            </a>
+        </nav>
+    </aside>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="contenido">
+
+        <header>
+            <h1>Sistema de Gestión Agrícola Pitahaya</h1>
+
+            <span>
+                <i data-lucide="circle-user-round"></i>
+                Administrador
+            </span>
+        </header>
+
+        <!-- ENCABEZADO -->
+        <section class="encabezado-parcelas">
+            <div>
+                <h2>Gestión de Cosechas</h2>
+                <p>Registro y seguimiento de la producción agrícola.</p>
+            </div>
+
+            <button id="btnNueva" type="button">
+                <i data-lucide="plus"></i>
+                Nueva cosecha
+            </button>
+        </section>
+
+        <!-- INDICADORES -->
+        <section class="resumen-cosechas">
+
+            <div class="resumen-card">
+                <div class="indicador-icono">
+                    <i data-lucide="wheat"></i>
+                </div>
+                <span>Total de cosechas</span>
+                <strong id="totalCosechas">--</strong>
+            </div>
+
+            <div class="resumen-card">
+                <div class="indicador-icono">
+                    <i data-lucide="sprout"></i>
+                </div>
+                <span>Cultivos cosechados</span>
+                <strong id="totalCultivosCosechados">--</strong>
+            </div>
+
+            <div class="resumen-card">
+                <div class="indicador-icono">
+                    <i data-lucide="calendar-check"></i>
+                </div>
+                <span>Última cosecha</span>
+                <strong id="ultimaCosecha" class="valor-fecha">--</strong>
+            </div>
+
+        </section>
+
+        <!-- TABLA -->
+        <section class="panel">
+            <h2>
+                <i data-lucide="clipboard-list"></i>
+                Cosechas registradas
+            </h2>
+
+            <div class="filtros-cosechas">
+                <input type="search" id="buscarCosecha" placeholder="Buscar por cultivo o parcela...">
+
+                <select id="filtroUnidad">
+                    <option value="">Todas las unidades</option>
+                    <option value="kg">Kilogramos</option>
+                    <option value="toneladas">Toneladas</option>
+                    <option value="quintales">Quintales</option>
+                    <option value="unidades">Unidades</option>
+                </select>
+            </div>
+
+            <div class="tabla-contenedor">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Cultivo</th>
+                            <th>Parcela</th>
+                            <th>Fecha</th>
+                            <th>Cantidad</th>
+                            <th>Unidad</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="tablaCosechas">
+                        <tr>
+                            <td colspan="7">Cargando cosechas...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- FORMULARIO -->
+        <section class="panel formulario-panel" id="panelFormulario" hidden>
+
+            <h2 id="tituloFormulario">Registrar cosecha</h2>
+
+            <form id="formCosecha">
+
+                <input type="hidden" id="cosechaId">
+
+                <label for="cultivo">Cultivo asociado</label>
+                <select id="cultivo" required>
+                    <option value="">Seleccione un cultivo</option>
+                </select>
+
+                <label for="fechaCosecha">Fecha de cosecha</label>
+                <input type="date" id="fechaCosecha" required>
+
+                <label for="cantidad">Cantidad cosechada</label>
+                <input type="number" id="cantidad" min="0.01" step="0.01" placeholder="Ej. 250.50" required>
+
+                <label for="unidadMedida">Unidad de medida</label>
+                <select id="unidadMedida" required>
+                    <option value="">Seleccione una unidad</option>
+                    <option value="kg">Kilogramos (kg)</option>
+                    <option value="toneladas">Toneladas</option>
+                    <option value="quintales">Quintales</option>
+                    <option value="unidades">Unidades</option>
+                </select>
+
+                <label for="observaciones">Observaciones</label>
+                <textarea id="observaciones" rows="4" placeholder="Detalles de la cosecha..."></textarea>
+
+                <div class="acciones-formulario">
+                    <button type="submit" id="btnGuardar">
+                        <i data-lucide="save"></i>
+                        Guardar cosecha
+                    </button>
+
+                    <button type="button" id="btnCancelar">
+                        Cancelar
+                    </button>
+                </div>
+
+            </form>
+        </section>
+    </main>
+
+</body>
+
+</html>

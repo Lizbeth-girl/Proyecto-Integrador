@@ -1,0 +1,224 @@
+/* RESUMEN */
+
+.resumen-ventas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 28px;
+}
+
+.resumen-venta-card {
+    background: white;
+    padding: 22px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px #0000000a;
+}
+
+.resumen-venta-card span {
+    display: block;
+    margin-bottom: 10px;
+    color: #65746b;
+    font-size: 14px;
+}
+
+.resumen-venta-card strong {
+    color: #25332b;
+    font-size: 30px;
+}
+
+.icono-venta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    margin-bottom: 16px;
+    border-radius: 12px;
+    background: #e5f5e9;
+    color: #24834b;
+}
+
+.icono-venta.rojo {
+    background: #fde9e7;
+    color: #c0392b;
+}
+
+/* FILTROS */
+
+.filtros-ventas {
+    display: flex;
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.filtros-ventas input,
+.filtros-ventas select {
+    padding: 12px;
+    border: 1px solid #d9dfdc;
+    border-radius: 7px;
+    background: white;
+    font-size: 14px;
+}
+
+.filtros-ventas input {
+    flex: 1;
+    min-width: 0;
+}
+
+/* TABLAS */
+
+.tabla-contenedor {
+    overflow-x: auto;
+}
+
+.tabla-contenedor table {
+    min-width: 720px;
+}
+
+.acciones-venta {
+    white-space: nowrap;
+}
+
+.acciones-venta button {
+    margin-right: 6px;
+}
+
+.estado-venta {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 7px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.estado-registrada {
+    color: #217a45;
+    background: #e2f5e6;
+}
+
+.estado-anulada {
+    color: #b42318;
+    background: #fde9e7;
+}
+
+/* FORMULARIO */
+
+#panelFormulario[hidden],
+#panelDetalle[hidden] {
+    display: none;
+}
+
+.formulario-venta {
+    max-width: 900px;
+}
+
+.formulario-venta h3 {
+    margin: 24px 0 14px;
+    font-size: 18px;
+}
+
+.formulario-venta label {
+    display: block;
+    margin: 14px 0 8px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.formulario-venta input,
+.formulario-venta select {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d9dfdc;
+    border-radius: 7px;
+    background: white;
+}
+
+.campos-venta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.ayuda-venta {
+    color: #65746b;
+    font-size: 13px;
+    line-height: 1.5;
+    margin-top: 12px;
+}
+
+.btn-agregar-producto {
+    margin-top: 18px;
+}
+
+.total-venta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 22px;
+    padding: 22px;
+    background: #e9f6ed;
+    color: #185735;
+    border-radius: 10px;
+}
+
+.total-venta strong {
+    font-size: 27px;
+}
+
+.acciones-formulario {
+    margin-top: 22px;
+    display: flex;
+    gap: 12px;
+}
+
+.cabecera-detalle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#contenidoDetalle {
+    margin-top: 20px;
+}
+
+.detalle-producto {
+    padding: 14px 0;
+    border-bottom: 1px solid #e3e8e5;
+}
+
+.detalle-producto strong {
+    display: block;
+    margin-bottom: 6px;
+}
+
+.detalle-producto p {
+    margin: 4px 0;
+    color: #65746b;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+    .resumen-ventas {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 700px) {
+    .resumen-ventas {
+        grid-template-columns: 1fr;
+    }
+
+    .filtros-ventas,
+    .campos-venta {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .total-venta {
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+}

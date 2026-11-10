@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Gestión de Clientes | AgroGestión</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/parcelas.css">
+    <link rel="stylesheet" href="css/clientes.css">
+
+    <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js" defer>
+    </script>
+    <script src="js/clientes.js" defer></script>
+</head>
+
+<body>
+    <!-- MENÚ LATERAL -->
+    <aside class="menu">
+        <h2>
+            <i data-lucide="sprout"></i>
+            AgroGestión
+        </h2>
+
+        <nav>
+            <a href="/index.html">
+                <i data-lucide="layout-dashboard"></i>
+                Dashboard
+            </a>
+
+            <a href="/parcelas.html">
+                <i data-lucide="map-pinned"></i>
+                Parcelas
+            </a>
+
+            <a href="/cultivos.html">
+                <i data-lucide="sprout"></i>
+                Cultivos
+            </a>
+
+            <a href="/actividades.html">
+                <i data-lucide="clipboard-check"></i>
+                Actividades
+            </a>
+
+            <a href="/cosechas.html">
+                <i data-lucide="wheat"></i>
+                Cosechas
+            </a>
+
+            <a href="/insumos.html">
+                <i data-lucide="package"></i>
+                Insumos
+            </a>
+
+            <a href="/trabajadores.html">
+                <i data-lucide="users"></i>
+                Trabajadores
+            </a>
+
+            <a href="/asignaciones.html">
+                <i data-lucide="list-check"></i>
+                Asignaciones
+            </a>
+
+            <a href="/clientes.html">
+                <i data-lucide="user-round"></i>
+                Clientes
+            </a>
+
+            <a href="/ventas.html">
+                <i data-lucide="shopping-cart"></i>
+                Ventas
+            </a>
+
+            <a href="#">
+                <i data-lucide="wallet"></i>
+                Gastos
+            </a>
+
+            <a href="#">
+                <i data-lucide="shield-check"></i>
+                Usuarios
+            </a>
+        </nav>
+    </aside>
+
+    <!-- CONTENIDO -->
+    <main class="contenido">
+        <header>
+            <h1>Sistema de Gestión Agrícola Pitahaya</h1>
+            <span>
+                <i data-lucide="circle-user-round"></i>
+                Administrador
+            </span>
+        </header>
+
+        <!-- ENCABEZADO -->
+        <section class="encabezado-parcelas">
+            <div>
+                <h2>Gestión de Clientes</h2>
+                <p>Registro y administración de compradores agrícolas.</p>
+            </div>
+
+            <button type="button" id="btnNuevo">
+                <i data-lucide="user-plus"></i>
+                Nuevo cliente
+            </button>
+        </section>
+
+        <!-- INDICADORES -->
+        <section class="resumen-clientes">
+            <div class="resumen-cliente-card">
+                <div class="icono-cliente">
+                    <i data-lucide="users"></i>
+                </div>
+                <span>Total de clientes</span>
+                <strong id="totalClientes">--</strong>
+            </div>
+
+            <div class="resumen-cliente-card">
+                <div class="icono-cliente">
+                    <i data-lucide="phone"></i>
+                </div>
+                <span>Clientes con teléfono</span>
+                <strong id="totalTelefonos">--</strong>
+            </div>
+
+            <div class="resumen-cliente-card">
+                <div class="icono-cliente">
+                    <i data-lucide="mail"></i>
+                </div>
+                <span>Clientes con correo</span>
+                <strong id="totalCorreos">--</strong>
+            </div>
+        </section>
+
+        <!-- LISTADO -->
+        <section class="panel">
+            <h2>
+                <i data-lucide="contact-round"></i>
+                Clientes registrados
+            </h2>
+
+            <div class="filtros-clientes">
+                <input type="search" id="buscarCliente" placeholder="Buscar cliente, identificación o teléfono...">
+
+                <select id="filtroContacto">
+                    <option value="">Todos los clientes</option>
+                    <option value="telefono">Con teléfono</option>
+                    <option value="correo">Con correo</option>
+                    <option value="sin-contacto">Sin teléfono ni correo</option>
+                </select>
+            </div>
+
+            <div class="tabla-contenedor">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre completo</th>
+                            <th>Identificación</th>
+                            <th>Teléfono</th>
+                            <th>Dirección</th>
+                            <th>Correo</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="tablaClientes">
+                        <tr>
+                            <td colspan="7">
+                                Cargando clientes...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- FORMULARIO -->
+        <section class="panel formulario-panel" id="panelFormulario" hidden>
+            <h2 id="tituloFormulario">
+                Registrar cliente
+            </h2>
+
+            <form id="formCliente">
+                <input type="hidden" id="clienteId">
+
+                <label for="nombre">Nombre completo</label>
+                <input type="text" id="nombre" placeholder="Ej. Carlos Alberto Pérez" required>
+
+                <label for="identificacion">
+                    Identificación
+                </label>
+                <input type="text" id="identificacion" placeholder="Cédula, RUC u otro documento">
+
+                <label for="telefono">Teléfono</label>
+                <input type="tel" id="telefono" placeholder="Ej. 0987654321">
+
+                <label for="direccion">Dirección</label>
+                <input type="text" id="direccion" placeholder="Ej. Orellana, Ecuador">
+
+                <label for="correo">Correo electrónico</label>
+                <input type="email" id="correo" placeholder="Ej. cliente@ejemplo.com">
+
+                <p class="ayuda-cliente">
+                    El nombre es obligatorio. Los demás campos
+                    pueden completarse posteriormente.
+                </p>
+
+                <div class="acciones-formulario">
+                    <button type="submit" id="btnGuardar">
+                        <i data-lucide="save"></i>
+                        Guardar cliente
+                    </button>
+
+                    <button type="button" id="btnCancelar">
+                        Cancelar
+                    </button>
+                </div>
+            </form>
+        </section>
+    </main>
+</body>
+
+</html>

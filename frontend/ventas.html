@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Gestión de Ventas | AgroGestión</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/parcelas.css">
+    <link rel="stylesheet" href="css/ventas.css">
+
+    <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js" defer>
+    </script>
+
+    <script src="js/ventas.js" defer></script>
+</head>
+
+<body>
+
+    <!-- MENÚ LATERAL -->
+    <aside class="menu">
+        <h2>
+            <i data-lucide="sprout"></i>
+            AgroGestión
+        </h2>
+
+        <nav>
+            <a href="/index.html">
+                <i data-lucide="layout-dashboard"></i>
+                Dashboard
+            </a>
+
+            <a href="/parcelas.html">
+                <i data-lucide="map-pinned"></i>
+                Parcelas
+            </a>
+
+            <a href="/cultivos.html">
+                <i data-lucide="sprout"></i>
+                Cultivos
+            </a>
+
+            <a href="/actividades.html">
+                <i data-lucide="clipboard-check"></i>
+                Actividades
+            </a>
+
+            <a href="/cosechas.html">
+                <i data-lucide="wheat"></i>
+                Cosechas
+            </a>
+
+            <a href="/insumos.html">
+                <i data-lucide="package"></i>
+                Insumos
+            </a>
+
+            <a href="/trabajadores.html">
+                <i data-lucide="users"></i>
+                Trabajadores
+            </a>
+
+            <a href="/asignaciones.html">
+                <i data-lucide="list-check"></i>
+                Asignaciones
+            </a>
+
+            <a href="/clientes.html">
+                <i data-lucide="user-round"></i>
+                Clientes
+            </a>
+
+            <a href="/ventas.html">
+                <i data-lucide="shopping-cart"></i>
+                Ventas
+            </a>
+
+            <a href="#">
+                <i data-lucide="wallet"></i>
+                Gastos
+            </a>
+
+            <a href="#">
+                <i data-lucide="shield-check"></i>
+                Usuarios
+            </a>
+        </nav>
+    </aside>
+
+    <!-- CONTENIDO -->
+    <main class="contenido">
+
+        <header>
+            <h1>Sistema de Gestión Pitahaya</h1>
+            <span>
+                <i data-lucide="circle-user-round"></i>
+                Administrador
+            </span>
+        </header>
+
+        <!-- TÍTULO -->
+        <section class="encabezado-parcelas">
+            <div>
+                <h2>Gestión de Ventas</h2>
+                <p>
+                    Comercialización y seguimiento de productos agrícolas.
+                </p>
+            </div>
+
+            <button type="button" id="btnNuevaVenta">
+                <i data-lucide="plus"></i>
+                Nueva venta
+            </button>
+        </section>
+
+        <!-- INDICADORES -->
+        <section class="resumen-ventas">
+            <div class="resumen-venta-card">
+                <div class="icono-venta">
+                    <i data-lucide="shopping-bag"></i>
+                </div>
+                <span>Ventas registradas</span>
+                <strong id="totalVentas">--</strong>
+            </div>
+
+            <div class="resumen-venta-card">
+                <div class="icono-venta">
+                    <i data-lucide="wallet"></i>
+                </div>
+                <span>Ingresos registrados</span>
+                <strong id="totalIngresos">--</strong>
+            </div>
+
+            <div class="resumen-venta-card">
+                <div class="icono-venta rojo">
+                    <i data-lucide="ban"></i>
+                </div>
+                <span>Ventas anuladas</span>
+                <strong id="totalAnuladas">--</strong>
+            </div>
+        </section>
+
+        <!-- HISTORIAL -->
+        <section class="panel">
+
+            <h2>
+                <i data-lucide="receipt"></i>
+                Historial de ventas
+            </h2>
+
+            <div class="filtros-ventas">
+                <input type="search" id="buscarVenta" placeholder="Buscar cliente, producto o número de venta...">
+
+                <select id="filtroEstado">
+                    <option value="">Todos los estados</option>
+                    <option value="Registrada">Registradas</option>
+                    <option value="Anulada">Anuladas</option>
+                </select>
+            </div>
+
+            <div class="tabla-contenedor">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Fecha</th>
+                            <th>Cliente</th>
+                            <th>Productos</th>
+                            <th>Total</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="tablaVentas">
+                        <tr>
+                            <td colspan="7">Cargando ventas...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- FORMULARIO NUEVA VENTA -->
+        <section class="panel formulario-venta" id="panelFormulario" hidden>
+            <h2>Registrar nueva venta</h2>
+
+            <form id="formVenta">
+
+                <label for="clienteVenta">
+                    Cliente
+                </label>
+
+                <select id="clienteVenta">
+                    <option value="">Venta sin cliente registrado</option>
+                </select>
+
+                <h3>Agregar producto agrícola</h3>
+
+                <label for="cosechaVenta">
+                    Cosecha disponible
+                </label>
+
+                <select id="cosechaVenta">
+                    <option value="">Seleccione una cosecha</option>
+                </select>
+
+                <p id="disponibilidadTexto" class="ayuda-venta">
+                    Selecciona una cosecha para consultar existencias.
+                </p>
+
+                <div class="campos-venta">
+                    <div>
+                        <label for="cantidadVenta">
+                            Cantidad
+                        </label>
+                        <input type="number" id="cantidadVenta" min="0.01" step="0.01" placeholder="Ej. 10.00">
+                    </div>
+
+                    <div>
+                        <label for="precioVenta">
+                            Precio unitario ($)
+                        </label>
+                        <input type="number" id="precioVenta" min="0.01" step="0.01" placeholder="Ej. 1.50">
+                    </div>
+                </div>
+
+                <button type="button" id="btnAgregarProducto" class="btn-agregar-producto">
+                    <i data-lucide="plus-circle"></i>
+                    Agregar producto
+                </button>
+
+                <h3>Productos de la venta</h3>
+
+                <div class="tabla-contenedor">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Producto</th>
+                                <th>Cantidad</th>
+                                <th>Precio</th>
+                                <th>Subtotal</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="tablaDetalle">
+                            <tr>
+                                <td colspan="5">
+                                    Agrega al menos un producto
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="total-venta">
+                    <span>Total de la venta</span>
+                    <strong id="totalFormulario">$ 0.00</strong>
+                </div>
+
+                <p class="ayuda-venta">
+                    El precio se registra por la unidad de medida
+                    de cada cosecha. El total corresponde al importe
+                    de los productos, sin impuestos adicionales.
+                </p>
+
+                <div class="acciones-formulario">
+                    <button type="submit" id="btnGuardarVenta">
+                        <i data-lucide="save"></i>
+                        Guardar venta
+                    </button>
+
+                    <button type="button" id="btnCancelarVenta">
+                        Cancelar
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <!-- DETALLES DE VENTA -->
+        <section class="panel" id="panelDetalle" hidden>
+            <div class="cabecera-detalle">
+                <h2 id="tituloDetalle">Detalle de venta</h2>
+
+                <button type="button" id="btnCerrarDetalle">
+                    Cerrar
+                </button>
+            </div>
+
+            <div id="contenidoDetalle"></div>
+        </section>
+
+    </main>
+</body>
+
+</html>

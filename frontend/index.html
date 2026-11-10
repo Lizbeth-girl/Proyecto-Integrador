@@ -1,165 +1,236 @@
-
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AgroGestión</title>
 
-    <link rel="stylesheet" href="css/style.css">
+    <title>AgroGestión | Sistema de Gestión Pitahaya</title>
 
-    <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js" defer></script>
-    <script src="js/app.js" defer></script>
+    <!-- ESTILOS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- ICONOS LUCIDE -->
+    <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js" defer>
+    </script>
+
+    <!-- DASHBOARD -->
+    <script src="/js/app.js" defer></script>
 </head>
+
 <body>
 
+    <!-- MENÚ LATERAL -->
     <aside class="menu">
+
         <h2>
             <i data-lucide="sprout"></i>
             AgroGestión
         </h2>
 
         <nav>
-            <a href="index.html" class="activo">
+
+            <!-- DASHBOARD -->
+            <a href="/index.html" class="activo">
                 <i data-lucide="layout-dashboard"></i>
                 Dashboard
             </a>
 
-            <a href="parcelas.html">
+            <!-- PARCELAS -->
+            <a href="/parcelas.html">
                 <i data-lucide="map-pinned"></i>
                 Parcelas
             </a>
 
-            <a href="cultivos.html">
+            <!-- CULTIVOS -->
+            <a href="/cultivos.html">
                 <i data-lucide="sprout"></i>
                 Cultivos
             </a>
 
-            <a href="#">
+            <!-- ACTIVIDADES -->
+            <a href="/actividades.html">
                 <i data-lucide="clipboard-check"></i>
                 Actividades
             </a>
 
-            <a href="#">
+            <!-- COSECHAS -->
+            <a href="/cosechas.html">
                 <i data-lucide="wheat"></i>
                 Cosechas
             </a>
 
-            <a href="#">
+            <!-- INSUMOS -->
+            <a href="/insumos.html">
                 <i data-lucide="package"></i>
                 Insumos
             </a>
 
-            <a href="#">
+            <!-- TRABAJADORES -->
+            <a href="/trabajadores.html">
                 <i data-lucide="users"></i>
                 Trabajadores
             </a>
 
-            <a href="#">
+            <!-- ASIGNACIONES -->
+            <a href="/asignaciones.html">
                 <i data-lucide="list-check"></i>
                 Asignaciones
             </a>
 
-            <a href="#">
+            <!-- CLIENTES -->
+            <a href="/clientes.html">
                 <i data-lucide="user-round"></i>
                 Clientes
             </a>
 
-            <a href="#">
+            <!-- VENTAS -->
+            <a href="/ventas.html">
                 <i data-lucide="shopping-cart"></i>
                 Ventas
             </a>
 
+            <!-- GASTOS -->
             <a href="#">
                 <i data-lucide="wallet"></i>
                 Gastos
             </a>
 
+            <!-- USUARIOS -->
             <a href="#">
                 <i data-lucide="shield-check"></i>
                 Usuarios
             </a>
+
         </nav>
+
     </aside>
 
+    <!-- CONTENIDO PRINCIPAL -->
     <main class="contenido">
 
+        <!-- ENCABEZADO -->
         <header>
-            <h1>Sistema de Gestión Agrícola</h1>
+
+            <h1>Sistema de Gestión Pitahaya</h1>
 
             <span>
                 <i data-lucide="circle-user-round"></i>
                 Administrador
             </span>
+
         </header>
 
+        <!-- BIENVENIDA -->
         <section class="bienvenida">
+
             <h2>Panel de administración</h2>
-            <p>Control y seguimiento de las actividades agrícolas.</p>
+
+            <p>
+                Control y seguimiento de las actividades agrícolas.
+            </p>
+
         </section>
 
+        <!-- INDICADORES -->
         <section class="tarjetas">
 
+            <!-- PARCELAS -->
             <div class="tarjeta">
+
                 <div class="tarjeta-icono verde">
                     <i data-lucide="map-pinned"></i>
                 </div>
+
                 <h3>Parcelas</h3>
+
                 <p id="totalParcelas">--</p>
+
             </div>
 
+            <!-- CULTIVOS -->
             <div class="tarjeta">
+
                 <div class="tarjeta-icono verde">
                     <i data-lucide="sprout"></i>
                 </div>
+
                 <h3>Cultivos</h3>
+
                 <p id="totalCultivos">--</p>
+
             </div>
 
+            <!-- ACTIVIDADES -->
             <div class="tarjeta">
+
                 <div class="tarjeta-icono azul">
                     <i data-lucide="clipboard-check"></i>
                 </div>
+
                 <h3>Actividades</h3>
+
                 <p id="totalActividades">--</p>
+
             </div>
 
+            <!-- COSECHAS -->
             <div class="tarjeta">
+
                 <div class="tarjeta-icono amarillo">
                     <i data-lucide="wheat"></i>
                 </div>
+
                 <h3>Cosechas</h3>
+
                 <p id="totalCosechas">--</p>
+
             </div>
 
+            <!-- TRABAJADORES -->
             <div class="tarjeta">
+
                 <div class="tarjeta-icono verde">
                     <i data-lucide="users"></i>
                 </div>
+
                 <h3>Trabajadores</h3>
+
                 <p id="totalTrabajadores">--</p>
+
             </div>
 
+            <!-- VENTAS -->
             <div class="tarjeta">
+
                 <div class="tarjeta-icono azul">
                     <i data-lucide="shopping-cart"></i>
                 </div>
+
                 <h3>Ventas</h3>
+
                 <p id="totalVentas">--</p>
+
             </div>
 
         </section>
 
+        <!-- ACTIVIDADES RECIENTES -->
         <section class="panel">
+
             <h2>
                 <i data-lucide="clipboard-list"></i>
                 Actividades agrícolas recientes
             </h2>
 
-            <p>Las actividades registradas aparecerán aquí.</p>
+            <p>
+                Las actividades registradas aparecerán aquí.
+            </p>
+
         </section>
 
     </main>
 
 </body>
+
 </html>

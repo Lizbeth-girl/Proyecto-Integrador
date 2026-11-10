@@ -1,63 +1,130 @@
-
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestión de Parcelas</title>
+    <title>Gestión de Parcelas | AgroGestión</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/parcelas.css">
+    <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js" defer>
+    </script>
     <script src="js/parcelas.js" defer></script>
 </head>
+
 <body>
 
     <aside class="menu">
-        <h2>AgroGestión</h2>
+
+        <h2>
+            <i data-lucide="sprout"></i>
+            AgroGestión
+        </h2>
 
         <nav>
-            <a href="index.html">Dashboard</a>
-            <a href="parcelas.html" class="activo">Parcelas</a>
-            <a href="#">Cultivos</a>
-            <a href="#">Actividades</a>
-            <a href="#">Cosechas</a>
-            <a href="#">Insumos</a>
-            <a href="#">Trabajadores</a>
-            <a href="#">Asignaciones</a>
-            <a href="#">Clientes</a>
-            <a href="#">Ventas</a>
-            <a href="#">Gastos</a>
-            <a href="#">Usuarios</a>
+            <a href="index.html">
+                <i data-lucide="layout-dashboard"></i>
+                Dashboard
+            </a>
+
+            <a href="parcelas.html" class="activo">
+                <i data-lucide="map-pinned"></i>
+                Parcelas
+            </a>
+
+            <a href="cultivos.html">
+                <i data-lucide="sprout"></i>
+                Cultivos
+            </a>
+
+            <a href="actividades.html">
+                <i data-lucide="clipboard-check"></i>
+                Actividades
+            </a>
+
+            <a href="/cosechas.html">
+                <i data-lucide="wheat"></i>
+                Cosechas
+            </a>
+
+            <a href="/insumos.html">
+                <i data-lucide="package"></i>
+                Insumos
+            </a>
+
+            <a href="/trabajadores.html">
+                <i data-lucide="users"></i>
+                Trabajadores
+            </a>
+
+            <a href="/asignaciones.html">
+                <i data-lucide="list-check"></i>
+                Asignaciones
+            </a>
+
+            <a href="/clientes.html">
+                <i data-lucide="user-round"></i>
+                Clientes
+            </a>
+
+            <a href="/ventas.html">
+                <i data-lucide="shopping-cart"></i>
+                Ventas
+            </a>
+
+            <a href="#">
+                <i data-lucide="wallet"></i>
+                Gastos
+            </a>
+
+            <a href="#">
+                <i data-lucide="shield-check"></i>
+                Usuarios
+            </a>
         </nav>
+
     </aside>
 
     <main class="contenido">
 
         <header>
-            <h1>Sistema de Gestión Agrícola</h1>
-            <span>Administrador</span>
+            <h1>Sistema de Gestión Pitahaya</h1>
+
+            <span>
+                <i data-lucide="circle-user-round"></i>
+                Administrador
+            </span>
         </header>
 
+        <!-- TÍTULO DEL MÓDULO -->
         <section class="encabezado-parcelas">
+
             <div>
                 <h2>Gestión de Parcelas</h2>
-                <p>Administración y control de parcelas agrícolas.</p>
+                <p>
+                    Administración y control de parcelas agrícolas.
+                </p>
             </div>
 
             <button type="button" id="btnNueva">
-                + Nueva parcela
+                <i data-lucide="plus"></i>
+                Nueva parcela
             </button>
+
         </section>
 
+        <!-- TABLA DE PARCELAS -->
         <section class="panel">
-            <h2>Parcelas registradas</h2>
 
-            <input
-                type="search"
-                id="buscarParcela"
-                placeholder="Buscar parcela..."
-            >
+            <h2>
+                <i data-lucide="map-pinned"></i>
+                Parcelas registradas
+            </h2>
+
+            <input type="search" id="buscarParcela" placeholder="Buscar por nombre, ubicación o estado...">
 
             <div class="tabla-contenedor">
+
                 <table>
                     <thead>
                         <tr>
@@ -72,54 +139,92 @@
 
                     <tbody id="tablaParcelas">
                         <tr>
-                            <td colspan="6">Cargando parcelas...</td>
+                            <td colspan="6">
+                                Cargando parcelas...
+                            </td>
                         </tr>
                     </tbody>
                 </table>
+
             </div>
+
         </section>
 
+        <!-- FORMULARIO DE REGISTRO / EDICIÓN -->
         <section class="panel formulario-panel" id="panelFormulario" hidden>
 
-            <h2 id="tituloFormulario">Registrar parcela</h2>
+            <h2 id="tituloFormulario">
+                Registrar parcela
+            </h2>
 
             <form id="formParcela">
+
                 <input type="hidden" id="parcelaId">
 
-                <label for="nombre">Nombre</label>
-                <input type="text" id="nombre" required>
+                <label for="nombre">
+                    Nombre de la parcela
+                </label>
 
-                <label for="ubicacion">Ubicación</label>
-                <input type="text" id="ubicacion" required>
+                <input type="text" id="nombre" maxlength="100" placeholder="Ej. Parcela Norte" required>
 
-                <label for="superficie">Superficie (hectáreas)</label>
-                <input
-                    type="number"
-                    id="superficie"
-                    min="0.01"
-                    step="0.01"
-                    required
-                >
+                <label for="ubicacion">
+                    Ubicación
+                </label>
 
-                <label for="estado">Estado</label>
+                <input type="text" id="ubicacion" maxlength="200" placeholder="Ej. Orellana" required>
+
+                <label for="superficie">
+                    Superficie (hectáreas)
+                </label>
+
+                <input type="number" id="superficie" min="0.01" max="99999999.99" step="0.01" placeholder="Ej. 3.50"
+                    required>
+
+                <label for="estado">
+                    Estado de la parcela
+                </label>
+
                 <select id="estado" required>
-                    <option value="">Seleccione un estado</option>
-                    <option value="Activa">Activa</option>
-                    <option value="En preparación">En preparación</option>
-                    <option value="En descanso">En descanso</option>
-                    <option value="Inactiva">Inactiva</option>
+                    <option value="">
+                        Seleccione un estado
+                    </option>
+
+                    <option value="Activa">
+                        Activa
+                    </option>
+
+                    <option value="En preparación">
+                        En preparación
+                    </option>
+
+                    <option value="En descanso">
+                        En descanso
+                    </option>
+
+                    <option value="Inactiva">
+                        Inactiva
+                    </option>
                 </select>
 
                 <div class="acciones-formulario">
-                    <button type="submit">Guardar</button>
+
+                    <button type="submit" id="btnGuardar">
+                        <i data-lucide="save"></i>
+                        Guardar
+                    </button>
+
                     <button type="button" id="btnCancelar">
                         Cancelar
                     </button>
+
                 </div>
+
             </form>
+
         </section>
 
     </main>
 
 </body>
+
 </html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Gestión de Trabajadores | AgroGestión</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/parcelas.css">
+    <link rel="stylesheet" href="css/trabajadores.css">
+
+    <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js" defer>
+    </script>
+    <script src="js/trabajadores.js" defer></script>
+</head>
+
+<body>
+
+    <!-- MENÚ LATERAL -->
+    <aside class="menu">
+        <h2>
+            <i data-lucide="sprout"></i>
+            AgroGestión
+        </h2>
+
+        <nav>
+            <a href="/index.html">
+                <i data-lucide="layout-dashboard"></i>
+                Dashboard
+            </a>
+
+            <a href="/parcelas.html">
+                <i data-lucide="map-pinned"></i>
+                Parcelas
+            </a>
+
+            <a href="/cultivos.html">
+                <i data-lucide="sprout"></i>
+                Cultivos
+            </a>
+
+            <a href="/actividades.html">
+                <i data-lucide="clipboard-check"></i>
+                Actividades
+            </a>
+
+            <a href="/cosechas.html">
+                <i data-lucide="wheat"></i>
+                Cosechas
+            </a>
+
+            <a href="/insumos.html">
+                <i data-lucide="package"></i>
+                Insumos
+            </a>
+
+            <a href="/trabajadores.html" class="activo">
+                <i data-lucide="users"></i>
+                Trabajadores
+            </a>
+
+            <a href="/asignaciones.html">
+                <i data-lucide="list-check"></i>
+                Asignaciones
+            </a>
+
+            <a href="/clientes.html">
+                <i data-lucide="user-round"></i>
+                Clientes
+            </a>
+
+            <a href="/ventas.html">
+                <i data-lucide="shopping-cart"></i>
+                Ventas
+            </a>
+
+            <a href="#">
+                <i data-lucide="wallet"></i>
+                Gastos
+            </a>
+
+            <a href="#">
+                <i data-lucide="shield-check"></i>
+                Usuarios
+            </a>
+        </nav>
+    </aside>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="contenido">
+
+        <header>
+            <h1>Sistema de Gestión Pitahaya</h1>
+            <span>
+                <i data-lucide="circle-user-round"></i>
+                Administrador
+            </span>
+        </header>
+
+        <!-- ENCABEZADO DEL MÓDULO -->
+        <section class="encabezado-parcelas">
+            <div>
+                <h2>Gestión de Trabajadores</h2>
+                <p>
+                    Registro y administración del personal agrícola.
+                </p>
+            </div>
+
+            <button id="btnNuevo" type="button">
+                <i data-lucide="user-plus"></i>
+                Nuevo trabajador
+            </button>
+        </section>
+
+        <!-- INDICADORES -->
+        <section class="resumen-trabajadores">
+
+            <div class="resumen-trabajador-card">
+                <div class="icono-trabajador verde">
+                    <i data-lucide="users"></i>
+                </div>
+
+                <span>Total de trabajadores</span>
+                <strong id="totalTrabajadores">--</strong>
+            </div>
+
+            <div class="resumen-trabajador-card">
+                <div class="icono-trabajador verde">
+                    <i data-lucide="user-check"></i>
+                </div>
+
+                <span>Trabajadores activos</span>
+                <strong id="totalActivos">--</strong>
+            </div>
+
+            <div class="resumen-trabajador-card">
+                <div class="icono-trabajador gris">
+                    <i data-lucide="user-x"></i>
+                </div>
+
+                <span>Trabajadores inactivos</span>
+                <strong id="totalInactivos">--</strong>
+            </div>
+
+        </section>
+
+        <!-- TABLA -->
+        <section class="panel">
+            <h2>
+                <i data-lucide="clipboard-list"></i>
+                Trabajadores registrados
+            </h2>
+
+            <div class="filtros-trabajadores">
+                <input type="search" id="buscarTrabajador" placeholder="Buscar nombre, apellido o cargo...">
+
+                <select id="filtroEstado">
+                    <option value="">Todos los estados</option>
+                    <option value="Activo">Activos</option>
+                    <option value="Inactivo">Inactivos</option>
+                </select>
+            </div>
+
+            <div class="tabla-contenedor">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombres</th>
+                            <th>Apellidos</th>
+                            <th>Teléfono</th>
+                            <th>Cargo</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="tablaTrabajadores">
+                        <tr>
+                            <td colspan="7">
+                                Cargando trabajadores...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- FORMULARIO -->
+        <section class="panel formulario-panel" id="panelFormulario" hidden>
+            <h2 id="tituloFormulario">
+                Registrar trabajador
+            </h2>
+
+            <form id="formTrabajador">
+                <input type="hidden" id="trabajadorId">
+
+                <label for="nombres">
+                    Nombres
+                </label>
+                <input type="text" id="nombres" maxlength="100" placeholder="Ej. Juan Carlos" required>
+
+                <label for="apellidos">
+                    Apellidos
+                </label>
+                <input type="text" id="apellidos" maxlength="100" placeholder="Ej. Pérez López" required>
+
+                <label for="telefono">
+                    Teléfono
+                </label>
+                <input type="tel" id="telefono" maxlength="20" placeholder="Ej. 0987654321">
+
+                <label for="cargo">
+                    Cargo
+                </label>
+                <select id="cargo">
+                    <option value="">Seleccione un cargo</option>
+                    <option value="Jornalero">Jornalero</option>
+                    <option value="Operador agrícola">
+                        Operador agrícola
+                    </option>
+                    <option value="Supervisor">Supervisor</option>
+                    <option value="Encargado de riego">
+                        Encargado de riego
+                    </option>
+                    <option value="Encargado de cosecha">
+                        Encargado de cosecha
+                    </option>
+                    <option value="Administrador">
+                        Administrador
+                    </option>
+                    <option value="Otro">Otro</option>
+                </select>
+
+                <label for="estado">
+                    Estado
+                </label>
+                <select id="estado" required>
+                    <option value="Activo">Activo</option>
+                    <option value="Inactivo">Inactivo</option>
+                </select>
+
+                <div class="acciones-formulario">
+                    <button type="submit" id="btnGuardar">
+                        <i data-lucide="save"></i>
+                        Guardar trabajador
+                    </button>
+
+                    <button type="button" id="btnCancelar">
+                        Cancelar
+                    </button>
+                </div>
+            </form>
+        </section>
+
+    </main>
+</body>
+
+</html>

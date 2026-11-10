@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Gestión de Actividades | AgroGestión</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/parcelas.css">
+    <link rel="stylesheet" href="css/actividades.css">
+
+    <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js" defer>
+    </script>
+
+    <script src="js/actividades.js" defer></script>
+</head>
+
+<body>
+
+    <!-- MENÚ LATERAL -->
+    <aside class="menu">
+
+        <h2>
+            <i data-lucide="sprout"></i>
+            AgroGestión
+        </h2>
+
+        <nav>
+            <a href="index.html">
+                <i data-lucide="layout-dashboard"></i>
+                Dashboard
+            </a>
+
+            <a href="parcelas.html">
+                <i data-lucide="map-pinned"></i>
+                Parcelas
+            </a>
+
+            <a href="cultivos.html">
+                <i data-lucide="sprout"></i>
+                Cultivos
+            </a>
+
+            <a href="actividades.html" class="activo">
+                <i data-lucide="clipboard-check"></i>
+                Actividades
+            </a>
+
+            <a href="/cosechas.html">
+                <i data-lucide="wheat"></i>
+                Cosechas
+            </a>
+
+            <a href="/insumos.html">
+                <i data-lucide="package"></i>
+                Insumos
+            </a>
+
+            <a href="/trabajadores.html">
+                <i data-lucide="users"></i>
+                Trabajadores
+            </a>
+
+            <a href="/asignaciones.html">
+                <i data-lucide="list-check"></i>
+                Asignaciones
+            </a>
+
+            <a href="/clientes.html">
+                <i data-lucide="user-round"></i>
+                Clientes
+            </a>
+
+            <a href="/ventas.html">
+                <i data-lucide="shopping-cart"></i>
+                Ventas
+            </a>
+
+            <a href="#">
+                <i data-lucide="wallet"></i>
+                Gastos
+            </a>
+
+            <a href="#">
+                <i data-lucide="shield-check"></i>
+                Usuarios
+            </a>
+        </nav>
+    </aside>
+
+    <!-- CONTENIDO -->
+    <main class="contenido">
+
+        <header>
+            <h1>Sistema de Gestión Pitahaya</h1>
+
+            <span>
+                <i data-lucide="circle-user-round"></i>
+                Administrador
+            </span>
+        </header>
+
+        <!-- ENCABEZADO DEL MÓDULO -->
+        <section class="encabezado-parcelas">
+
+            <div>
+                <h2>Gestión de Actividades Agrícolas</h2>
+                <p>Planificación y seguimiento de trabajos agrícolas.</p>
+            </div>
+
+            <button id="btnNueva" type="button">
+                <i data-lucide="plus"></i>
+                Nueva actividad
+            </button>
+        </section>
+
+        <!-- INDICADORES -->
+        <section class="resumen-actividades">
+
+            <div class="resumen-card">
+                <span>Total de actividades</span>
+                <strong id="totalActividades">--</strong>
+            </div>
+
+            <div class="resumen-card">
+                <span>Pendientes</span>
+                <strong id="totalPendientes">--</strong>
+            </div>
+
+            <div class="resumen-card">
+                <span>En proceso</span>
+                <strong id="totalProceso">--</strong>
+            </div>
+
+            <div class="resumen-card">
+                <span>Completadas</span>
+                <strong id="totalCompletadas">--</strong>
+            </div>
+
+        </section>
+
+        <!-- TABLA -->
+        <section class="panel">
+
+            <h2>
+                <i data-lucide="clipboard-list"></i>
+                Actividades registradas
+            </h2>
+
+            <div class="filtros-actividades">
+
+                <input type="search" id="buscarActividad" placeholder="Buscar actividad, cultivo o parcela...">
+
+                <select id="filtroEstado">
+                    <option value="">Todos los estados</option>
+                    <option value="Pendiente">Pendientes</option>
+                    <option value="En proceso">En proceso</option>
+                    <option value="Completada">Completadas</option>
+                </select>
+
+            </div>
+
+            <div class="tabla-contenedor">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Actividad</th>
+                            <th>Cultivo</th>
+                            <th>Parcela</th>
+                            <th>Programada</th>
+                            <th>Realizada</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="tablaActividades">
+                        <tr>
+                            <td colspan="8">Cargando actividades...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </section>
+
+        <!-- FORMULARIO -->
+        <section class="panel formulario-panel" id="panelFormulario" hidden>
+
+            <h2 id="tituloFormulario">
+                Registrar actividad
+            </h2>
+
+            <form id="formActividad">
+
+                <input type="hidden" id="actividadId">
+
+                <label for="cultivo">
+                    Cultivo asociado
+                </label>
+
+                <select id="cultivo" required>
+                    <option value="">Seleccione un cultivo</option>
+                </select>
+
+                <label for="nombre">
+                    Nombre de la actividad
+                </label>
+
+                <input type="text" id="nombre" placeholder="Ej. Riego, fertilización, mantenimiento" required>
+
+                <label for="descripcion">
+                    Descripción
+                </label>
+
+                <textarea id="descripcion" rows="4" placeholder="Describe el trabajo que se realizará"></textarea>
+
+                <label for="fechaProgramada">
+                    Fecha programada
+                </label>
+
+                <input type="date" id="fechaProgramada" required>
+
+                <label for="estado">
+                    Estado
+                </label>
+
+                <select id="estado" required>
+                    <option value="Pendiente">Pendiente</option>
+                    <option value="En proceso">En proceso</option>
+                    <option value="Completada">Completada</option>
+                </select>
+
+                <div id="campoFechaRealizada" hidden>
+                    <label for="fechaRealizada">
+                        Fecha realizada
+                    </label>
+
+                    <input type="date" id="fechaRealizada">
+                </div>
+
+                <div class="acciones-formulario">
+                    <button type="submit" id="btnGuardar">
+                        <i data-lucide="save"></i>
+                        Guardar actividad
+                    </button>
+
+                    <button type="button" id="btnCancelar">
+                        Cancelar
+                    </button>
+                </div>
+
+            </form>
+
+        </section>
+
+    </main>
+</body>
+
+</html>

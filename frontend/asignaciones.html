@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Gestión de Asignaciones | AgroGestión</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/parcelas.css">
+    <link rel="stylesheet" href="css/asignaciones.css">
+
+    <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js" defer>
+    </script>
+    <script src="js/asignaciones.js" defer></script>
+</head>
+
+<body>
+    <!-- MENÚ LATERAL -->
+    <aside class="menu">
+        <h2>
+            <i data-lucide="sprout"></i>
+            AgroGestión
+        </h2>
+
+        <nav>
+            <a href="/index.html">
+                <i data-lucide="layout-dashboard"></i>
+                Dashboard
+            </a>
+
+            <a href="/parcelas.html">
+                <i data-lucide="map-pinned"></i>
+                Parcelas
+            </a>
+
+            <a href="/cultivos.html">
+                <i data-lucide="sprout"></i>
+                Cultivos
+            </a>
+
+            <a href="/actividades.html">
+                <i data-lucide="clipboard-check"></i>
+                Actividades
+            </a>
+
+            <a href="/cosechas.html">
+                <i data-lucide="wheat"></i>
+                Cosechas
+            </a>
+
+            <a href="/insumos.html">
+                <i data-lucide="package"></i>
+                Insumos
+            </a>
+
+            <a href="/trabajadores.html">
+                <i data-lucide="users"></i>
+                Trabajadores
+            </a>
+
+            <a href="/asignaciones.html">
+                <i data-lucide="list-check"></i>
+                Asignaciones
+            </a>
+
+            <a href="/clientes.html">
+                <i data-lucide="user-round"></i>
+                Clientes
+            </a>
+
+            <a href="/ventas.html">
+                <i data-lucide="shopping-cart"></i>
+                Ventas
+            </a>
+
+            <a href="#">
+                <i data-lucide="wallet"></i>
+                Gastos
+            </a>
+
+            <a href="#">
+                <i data-lucide="shield-check"></i>
+                Usuarios
+            </a>
+        </nav>
+    </aside>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="contenido">
+
+        <header>
+            <h1>Sistema de Gestión Pitahaya</h1>
+            <span>
+                <i data-lucide="circle-user-round"></i>
+                Administrador
+            </span>
+        </header>
+
+        <section class="encabezado-parcelas">
+            <div>
+                <h2>Gestión de Asignaciones</h2>
+                <p>Organización del personal y las actividades agrícolas.</p>
+            </div>
+
+            <button type="button" id="btnNueva">
+                <i data-lucide="plus"></i>
+                Nueva asignación
+            </button>
+        </section>
+
+        <!-- INDICADORES -->
+        <section class="resumen-asignaciones">
+
+            <div class="resumen-asignacion-card">
+                <div class="icono-resumen">
+                    <i data-lucide="list-check"></i>
+                </div>
+                <span>Total de asignaciones</span>
+                <strong id="totalAsignaciones">--</strong>
+            </div>
+
+            <div class="resumen-asignacion-card">
+                <div class="icono-resumen">
+                    <i data-lucide="users"></i>
+                </div>
+                <span>Trabajadores asignados</span>
+                <strong id="totalTrabajadoresAsignados">--</strong>
+            </div>
+
+            <div class="resumen-asignacion-card">
+                <div class="icono-resumen">
+                    <i data-lucide="clipboard-check"></i>
+                </div>
+                <span>Actividades con responsables</span>
+                <strong id="totalActividadesAsignadas">--</strong>
+            </div>
+
+        </section>
+
+        <!-- TABLA -->
+        <section class="panel">
+            <h2>
+                <i data-lucide="clipboard-list"></i>
+                Asignaciones registradas
+            </h2>
+
+            <div class="filtros-asignaciones">
+                <input type="search" id="buscarAsignacion"
+                    placeholder="Buscar trabajador, actividad, cultivo o parcela...">
+
+                <select id="filtroEstado">
+                    <option value="">Todas las actividades</option>
+                    <option value="Pendiente">Pendientes</option>
+                    <option value="En proceso">En proceso</option>
+                    <option value="Completada">Completadas</option>
+                </select>
+            </div>
+
+            <div class="tabla-contenedor">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Actividad</th>
+                            <th>Cultivo</th>
+                            <th>Parcela</th>
+                            <th>Trabajador</th>
+                            <th>Cargo</th>
+                            <th>Estado actividad</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="tablaAsignaciones">
+                        <tr>
+                            <td colspan="8">
+                                Cargando asignaciones...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- FORMULARIO -->
+        <section class="panel formulario-panel" id="panelFormulario" hidden>
+            <h2 id="tituloFormulario">
+                Registrar asignación
+            </h2>
+
+            <form id="formAsignacion">
+                <input type="hidden" id="asignacionId">
+
+                <label for="actividad">
+                    Actividad agrícola
+                </label>
+
+                <select id="actividad" required>
+                    <option value="">
+                        Seleccione una actividad
+                    </option>
+                </select>
+
+                <label for="trabajador">
+                    Trabajador responsable
+                </label>
+
+                <select id="trabajador" required>
+                    <option value="">
+                        Seleccione un trabajador activo
+                    </option>
+                </select>
+
+                <p class="ayuda-asignacion">
+                    Cada trabajador puede participar en distintas
+                    actividades, pero no debe registrarse dos veces
+                    en la misma actividad.
+                </p>
+
+                <div class="acciones-formulario">
+                    <button type="submit" id="btnGuardar">
+                        <i data-lucide="save"></i>
+                        Guardar asignación
+                    </button>
+
+                    <button type="button" id="btnCancelar">
+                        Cancelar
+                    </button>
+                </div>
+            </form>
+        </section>
+    </main>
+</body>
+
+</html>
